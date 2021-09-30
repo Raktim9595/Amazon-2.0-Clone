@@ -12,16 +12,16 @@ function Product({id, title, price, description, category, image}) {
   );
   const [hasPrime] = useState(Math.random() < 0.5)
   return (
-    <div className="flex relative flex-col z-30 bg-white m-5 p-10 rounded drop-shadow-md">
+    <div className="flex relative flex-col z-30 bg-white m-5 p-10 rounded shadow-md">
       <p className="absolute top-2 right-3 text-xs italic text-gray-400">{category}</p>
       <Image loading="lazy" src={image} width={200} height={200} objectFit="contain" />
-      <h4 className="my-3">{title}</h4>
+      <h4 className="my-3 font-semibold">{title}</h4>
       <div className="flex">
         {Array(rating).fill().map((_,i) => (
           <StarIcon className="h-5 text-yellow-500" />
         ))}
       </div>
-      <p className="text-xs my-2 line-clamp-2">{description}</p>
+      <p className="text-xs my-2 line-clamp-2 text-gray-600">{description}</p>
       <div className="mb-5">
         <Currency quantity={price} currency="GBP" />
       </div>

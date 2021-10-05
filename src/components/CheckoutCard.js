@@ -11,8 +11,8 @@ function CheckoutCard({ id, price, rating, description, image, category, hasPrim
 
   const addItemToBasket = () => {
     const product = { id: newId, price, rating, description, image, category, hasPrime, title };
-    dispatch(addToBasket(product));
     dispatch(increaseCount());
+    dispatch(addToBasket(product));
   }
 
   const removeItemFromBasket = () => {

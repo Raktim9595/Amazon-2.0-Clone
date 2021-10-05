@@ -2,19 +2,27 @@ import Image from "next/image";
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from 'react-currency-formatter';
-import { useDispatch } from "react-redux";
-import { addToBasket } from "../slices/basketSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToBasket, selectItems } from "../slices/basketSlice";
+import { selectCountValue, increaseCount } from "../slices/countSlice";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
-function Product({id, title, price, description, category, image}) {
+function Product({id, title, price, descriptgit add .ion, category, image}) {
   const dispatch = useDispatch();
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
+  let newId = useSelector(selectCountValue);
+  let items = useSelector(selectItems);
   const [hasPrime] = useState(Math.random() < 0.5);
   const addItemToBasket = () => {
+    let newArray = items.filter(item => item.id === id);
+    if(newArray.length > 0) {
+      dispatch(increaseCount());
+      id = newId;
+    }
     const product = {
       id,
       title,

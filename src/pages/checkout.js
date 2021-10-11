@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckoutCard from "../components/CheckoutCard";
-import { useSession } from "next-auth/client";
+import { useSession, getSession } from "next-auth/client";
 import Currency from "react-currency-formatter";
 import Head from "next/head";
 import { loadStripe } from "@stripe/stripe-js";
@@ -94,3 +94,12 @@ function checkout() {
 }
 
 export default checkout;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  return {
+    props: {
+      session
+    }
+  }
+}

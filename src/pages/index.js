@@ -5,13 +5,13 @@ import ProductFeed from "../components/ProductFeed";
 
 export default function Home({ products }) {
   return (
-    <div className="bg-gray-100 relative">
+    <div className="bg-gray-100 relative pb-28">
       <Head>
         <title>Amazon 2.0</title>
       </Head>
       {/* Header component  */}
       <Header />
-      <main className="max-w-screen-2xl mx-auto absolute top-24">
+      <main className="max-w-screen-2xl mx-auto transform translate-y-24">
         {/* Banner  */}
         <Banner />
         {/* product feed  */}

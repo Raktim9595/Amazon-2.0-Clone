@@ -11,9 +11,9 @@ import axios from "axios";
 
 const stripePromise = loadStripe(process.env.stripe_public_key);
 
-function checkout() {
+function checkout({ session }) {
   const items = useSelector(selectItems);
-  const [session] = useSession();
+  // const [session] = useSession();
   let total = useSelector(selectTotal);
 
   const createCheckoutSession = async() => {
@@ -38,7 +38,7 @@ function checkout() {
       <Head>
         <title>Amazon 2.0</title>
       </Head>
-      <Header />
+      <Header session={session} />
       <main className="lg:flex max-w-screen-2xl mx-auto transform translate-y-24 mb-28">
         {/* left section   */}
         <div className="flex-grow mb-5 ml-5 mr-5 shadow-sm">

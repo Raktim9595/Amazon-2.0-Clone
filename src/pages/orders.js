@@ -6,14 +6,14 @@ import stripe from "stripe";
 import Order from "../components/Order";
 import Head from "next/head";
 
-function orders({ ordersList }) {
-  const [session] = useSession();
+function orders({ ordersList, session }) {
+  // const [session] = useSession();
   return (
     <div>
       <Head>
         <title>Amazon 2.0</title>
       </Head>
-      <Header />
+      <Header session={session} />
       <main className="max-w-screen-lg mx-auto transform translate-y-24 p-10">
         <h1 className="text-3xl border-b mb-2 pb-1 border-yellow-500">Your Orders</h1>
         {session ? (
@@ -67,7 +67,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       ordersList: stripeOrders,
-      session,
+      session: session,
     }
   };
 };

@@ -4,14 +4,14 @@ import Banner from "../components/Banner";
 import ProductFeed from "../components/ProductFeed";
 import { getSession } from "next-auth/client";
 
-export default function Home({ products }) {
+export default function Home({ products, session }) {
   return (
     <div className="bg-gray-100 relative pb-28">
       <Head>
         <title>Amazon 2.0</title>
       </Head>
       {/* Header component  */}
-      <Header />
+      <Header session={session} />
       <main className="max-w-screen-2xl mx-auto transform translate-y-24">
         {/* Banner  */}
         <Banner />

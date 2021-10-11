@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 import { useSelector } from 'react-redux';
 import { selectItems } from '../slices/basketSlice';
 
-function Header() {
-  const [session] = useSession();
+function Header({ session }) {
+  // const [session] = useSession();
   const router = useRouter();
   const items = useSelector(selectItems);
 
